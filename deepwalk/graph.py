@@ -17,6 +17,7 @@ from random import shuffle
 from itertools import product,permutations
 from scipy.io import loadmat
 from scipy.sparse import issparse
+from scipy import sparse
 
 logger = logging.getLogger("deepwalk")
 
@@ -258,6 +259,10 @@ def load_matfile(file_, variable_name="network", undirected=True):
 
   return from_numpy(mat_matrix, undirected)
 
+def load_npyfile(file_, undirected=True):
+  npy_matrix = np.load(file_)
+  npy_matrix = sparse.csr_matrix(npy_matrix)
+  return from_numpy(npy_matrix, undirected)
 
 def from_networkx(G_input, undirected=True):
     G = Graph()

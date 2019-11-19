@@ -54,6 +54,8 @@ def process(args):
     G = graph.load_edgelist(args.input, undirected=args.undirected)
   elif args.format == "mat":
     G = graph.load_matfile(args.input, variable_name=args.matfile_variable_name, undirected=args.undirected)
+  elif args.format == "npy":
+    G = graph.load_npyfile(args.input, undirected=args.undirected)
   else:
     raise Exception("Unknown file format: '%s'.  Valid formats: 'adjlist', 'edgelist', 'mat'" % args.format)
 
